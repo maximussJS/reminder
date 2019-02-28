@@ -4,16 +4,16 @@ import {readFileSync} from 'fs'
 import {createServer} from 'https'
 
 
-const key = readFileSync('private.key')
-const cert = readFileSync('mydomain.csr')
+const key = readFileSync('key.pem')
+const cert = readFileSync('cert.pem')
 
-console.log(key + ' !!! ' + cert)
 
 load()
 
 const server = createServer({
     key: key,
-    cert: cert
+    cert: cert,
+    passphrase: process.env.PASSPHRASE
 }, app)
 
 
