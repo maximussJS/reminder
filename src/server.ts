@@ -4,8 +4,10 @@ import {readFileSync} from 'fs'
 import {createServer} from 'https'
 
 
-const key = readFileSync('../private.key')
-const cert = readFileSync('../mydomain.csr')
+const key = readFileSync('private.key')
+const cert = readFileSync('mydomain.csr')
+
+console.log(key + ' !!! ' + cert)
 
 load()
 
