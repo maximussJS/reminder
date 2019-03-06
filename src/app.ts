@@ -1,5 +1,4 @@
 import {json,urlencoded} from 'body-parser'
-import './database'
 import * as express from 'express'
 import router from './routes'
 

@@ -1,5 +1,9 @@
-import app from './app'
 import {load} from 'dotenv'
+
+load()
+
+import './database'
+import app from './app'
 import {readFileSync} from 'fs'
 import {createServer} from 'https'
 
@@ -7,8 +11,6 @@ import {createServer} from 'https'
 const key = readFileSync('key.pem')
 const cert = readFileSync('cert.pem')
 
-
-load()
 
 const server = createServer({
     key: key,

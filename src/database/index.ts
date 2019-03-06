@@ -1,9 +1,6 @@
-import {load} from 'dotenv'
 import * as Sequelize from 'sequelize'
 import RemindModel from './models/remind'
 
-
-load()
 
 const DB = Symbol('DB')
 const USER = Symbol('USER')
