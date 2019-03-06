@@ -24,4 +24,6 @@ seq.authenticate()
     .catch( e => console.error('Postgres Connection Error : ',e))
 
 
-export const Remind = RemindModel(seq, Sequelize)
+export const Remind = RemindModel(seq, Sequelize).sync({
+    force: true
+})
