@@ -1,5 +1,5 @@
 import * as Bot from 'node-telegram-bot-api'
-import { Remind } from './database/models/remind'
+import { makeRemind, aboutBot } from './controllers/reminds'
 import { MAKE_REMIND, MY_REMINDS, ABOUT_BOT } from './utils/buttonTypes'
 import { hello, writeDate, remind, error, help, about } from './utils/answers'
 import { startButtons, repeatMakeRemindButton, helpButtons } from './utils/buttons'
@@ -27,23 +27,11 @@ bot.on('callback_query', async msg => {
     try {
         switch (msg.data) {
             case MAKE_REMIND: {
-                await bot.sendMessage(id, 'Text your remind and send it me')
-                bot.once('message', async text => {
-                    await bot.sendMessage(id, writeDate(first_name))
-                    bot.once('message', async data => {
-                        if (isNaN(Date.parse(data.text))) {
-                            await bot.sendMessage(id, 'Invalid time, please repeat', repeatMakeRemindButton)
-                        } else if (Date.parse(data.text) < Date.parse(new Date().toDateString())) {
-                            await bot.sendMessage(id, 'This time has passed, enter again', repeatMakeRemindButton)
-                        } else {
-                            await bot.sendMessage(id, remind(new Date(data.text).toUTCString()))
-                        }
-                    })
-                })
+                await makeRemind(bot, msg.message)
                 break
             }
             case ABOUT_BOT: {
-                await bot.sendMessage(id, about())
+                await aboutBot(bot, msg.message)
                 break
             }
             default:
