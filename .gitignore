@@ -81,3 +81,4 @@ package-lock.json
 build
 key.pem
 cert.pem
+.prettierrc

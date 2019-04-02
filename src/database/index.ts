@@ -1,29 +1,23 @@
-import * as Sequelize from 'sequelize'
-import RemindModel from './models/remind'
+import 'reflect-metadata'
+import { Remind } from './models/remind'
+import { createConnection, Connection, ConnectionOptions } from 'typeorm'
 
+let connection: Connection
 
-const DB = Symbol('DB')
-const USER = Symbol('USER')
-const PASS = Symbol('PASS')
-
-const options = {
-    [DB]: process.env.PG_NAME,
-    [USER]: process.env.PG_USER,
-    [PASS]: process.env.PG_PASSWORD
+const connectionOptions: ConnectionOptions = {
+    name: `default`,
+    type: `postgres`,
+    url: process.env.DATABASE_URL,
+    synchronize: true,
+    logging: process.env.NODE_ENV === 'production',
+    entities: [Remind],
 }
 
+createConnection(connectionOptions)
+    .then((conn: Connection) => {
+        console.log('Postgres Connected')
+        connection = conn
+    })
+    .catch((err: Error) => console.error('Postgres Connection Error : ', err))
 
-const seq = new Sequelize(options[DB], options[USER], options[PASS], {
-    host: process.env.PG_HOST || '127.0.0.1',
-    port: parseInt(process.env.PG_PORT) || 5432,
-    dialect: 'postgres'
-})
-
-seq.authenticate()
-    .then(() => console.log('Postgres Connected'))
-    .catch( e => console.error('Postgres Connection Error : ',e))
-
-
-export const Remind = RemindModel(seq, Sequelize).sync({
-    force: true
-})
+export { connection }

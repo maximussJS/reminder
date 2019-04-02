@@ -3,7 +3,10 @@
     "target": "es2017",
     "module": "commonjs",
     "outDir": "build",
-    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "strict": false,
     "rootDir": "src"
   },
   "include": [

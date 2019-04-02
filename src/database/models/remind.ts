@@ -1,37 +1,33 @@
-const Remind = (sequelize, type) => sequelize.define('reminds', {
-        id: {
-            type: type.INTEGER,
-            primaryKey: true,
-            autoIncrement: true,
-            unique: true,
-            allowNull: false
-        },
-        text : {
-            type: type.STRING,
-            allowNull: false
-        },
-        chat_id : {
-            type: type.INTEGER,
-            validate: {
-                isNumeric : true
-            },
-            allowNull: false
-        },
-        time : {
-            type: type.DATE,
-            allowNull: false
-        }
-    },
-    {
-        tableName: 'reminds',
-        freezeTableName: true,
-        timestamps: true,
-        name: {
-            singular: 'reminds',
-            plural: 'reminds'
-        }
+import { IRemind } from '../../utils/interfaces'
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn } from 'typeorm'
+
+@Entity('reminds')
+export class Remind implements IRemind {
+    @PrimaryGeneratedColumn()
+    id: number
+
+    @Column({
+        name: 'text',
+        length: 500,
+    })
+    text: string
+
+    @Column({
+        name: 'chat_id',
+    })
+    chat_id: number
+
+    @Column({
+        name: 'time',
+    })
+    time: Date
+
+    @CreateDateColumn()
+    createdAt: Date
+
+    setInfo(text: string, chat_id: number, time: Date) {
+        this.text = text
+        this.chat_id = chat_id
+        this.time = time
     }
-)
-
-
-export default Remind
+}

@@ -1,5 +1,4 @@
-import {MY_REMINDS, MAKE_REMIND, ABOUT_BOT} from './buttonTypes'
-
+import { MY_REMINDS, MAKE_REMIND, ABOUT_BOT } from './buttonTypes'
 
 export const startButtons = {
     disable_web_page_preview: false,
@@ -9,21 +8,21 @@ export const startButtons = {
             [
                 {
                     text: 'Make Remind',
-                    callback_data: MAKE_REMIND
+                    callback_data: MAKE_REMIND,
                 },
                 {
                     text: 'My Reminds',
-                    callback_data: MY_REMINDS
-                }
+                    callback_data: MY_REMINDS,
+                },
             ],
             [
                 {
                     text: 'About Bot',
-                    callback_data: ABOUT_BOT
-                }
-            ]
-        ]
-    }
+                    callback_data: ABOUT_BOT,
+                },
+            ],
+        ],
+    },
 }
 
 export const helpButtons = {
@@ -34,21 +33,21 @@ export const helpButtons = {
             [
                 {
                     text: 'Make Remind',
-                    callback_data: MAKE_REMIND
+                    callback_data: MAKE_REMIND,
                 },
                 {
                     text: 'My Reminds',
-                    callback_data: MY_REMINDS
-                }
+                    callback_data: MY_REMINDS,
+                },
             ],
             [
                 {
                     text: 'About Bot',
-                    callback_data: ABOUT_BOT
-                }
-            ]
-        ]
-    }
+                    callback_data: ABOUT_BOT,
+                },
+            ],
+        ],
+    },
 }
 
 export const repeatMakeRemindButton = {
@@ -59,9 +58,9 @@ export const repeatMakeRemindButton = {
             [
                 {
                     text: 'Repeat',
-                    callback_data: MAKE_REMIND
-                }
-            ]
-        ]
-    }
+                    callback_data: MAKE_REMIND,
+                },
+            ],
+        ],
+    },
 }

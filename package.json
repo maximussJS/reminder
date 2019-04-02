@@ -18,8 +18,11 @@
     "@types/node-telegram-bot-api": "^0.30.4",
     "@types/pg": "^7.4.13",
     "@types/sequelize": "^4.27.39",
-    "tslint": "^5.13.0",
+    "prettier": "^1.16.4",
+    "tslint": "^5.15.0",
+    "tslint-config-prettier": "^1.18.0",
     "tslint-config-standard": "^8.0.1",
+    "tslint-plugin-prettier": "^2.0.1",
     "typescript": "^3.3.3333"
   },
   "dependencies": {
@@ -28,6 +31,7 @@
     "express": "^4.16.4",
     "node-telegram-bot-api": "^0.30.0",
     "pg": "^7.8.1",
-    "sequelize": "^4.43.0"
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.16"
   }
 }

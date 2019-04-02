@@ -1,6 +1,28 @@
 {
   "extends": [
-    "tslint:latest",
+    "tslint:recommended",
+    "tslint-config-prettier",
+    "tslint-plugin-prettier",
     "tslint-config-standard"
-  ]
+  ],
+  "rulesDirectory": [
+    "tslint-plugin-prettier"
+  ],
+  "defaultSeverity": "warning",
+  "rules": {
+    "prettier": true,
+    "ordered-imports": false,
+    "ter-indent": false,
+    "member-access": false,
+    "trailing-comma": false,
+    "object-literal-sort-keys": false,
+    "space-before-function-paren": false,
+    "no-trailing-whitespace": false,
+    "no-console": false,
+    "max-classes-per-file": false,
+    "interface-over-type-literal": false,
+    "array-type": false,
+    "member-ordering": false,
+    "curly": false
+  }
 }
