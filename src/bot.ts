@@ -1,8 +1,8 @@
 import * as Bot from 'node-telegram-bot-api'
-import { makeRemind, aboutBot } from './controllers/reminds'
+import { hello, error, help } from './utils/answers'
+import { startButtons, helpButtons } from './utils/buttons'
+import { makeRemind, aboutBot, myReminds } from './controllers/reminds'
 import { MAKE_REMIND, MY_REMINDS, ABOUT_BOT } from './utils/buttonTypes'
-import { hello, writeDate, remind, error, help, about } from './utils/answers'
-import { startButtons, repeatMakeRemindButton, helpButtons } from './utils/buttons'
 
 const isProd = process.env.NODE_ENV === 'production'
 
@@ -34,12 +34,15 @@ bot.on('callback_query', async msg => {
                 await aboutBot(bot, msg.message)
                 break
             }
+            case MY_REMINDS: {
+                await myReminds(bot, msg.message)
+                break
+            }
             default:
                 break
         }
     } catch (e) {
-        console.error('Bot Error : ', e)
-        bot.sendMessage(id, error(first_name))
+        bot.sendMessage(id, error(first_name)).then(() => console.error('Bot Callback Query Error : ', e))
     }
 })
 

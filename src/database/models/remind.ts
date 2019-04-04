@@ -30,4 +30,12 @@ export class Remind implements IRemind {
         this.chat_id = chat_id
         this.time = time
     }
+
+    getText(): string {
+        return this.text
+    }
+
+    getTime(): Date {
+        return this.time
+    }
 }

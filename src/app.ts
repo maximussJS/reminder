@@ -1,6 +1,6 @@
-import { json, urlencoded } from 'body-parser'
 import * as express from 'express'
 import router from './routes'
+import { json, urlencoded } from 'body-parser'
 
 const app = express()
 
